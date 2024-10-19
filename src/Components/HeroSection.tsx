@@ -41,7 +41,6 @@ export default function HeroSection() {
         >
           {greetings[currentGreeting]}!
         </motion.h1>
-  variable: "--c",
         <h2 className="sm:text-3xl text-2xl mb-2">I&apos;m <span className='font-bold'>Sourav Chhimpa</span></h2>
         <p className="text-xl italic">Web Designer & Developer.</p>
         <motion.div
