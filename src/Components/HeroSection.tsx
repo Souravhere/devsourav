@@ -14,7 +14,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
     const glitchInterval = setInterval(() => {
       glitchControls.start({
         x: [0, -5, 5, -5, 5, 0],
-        transition: { duration: 0.5 }
+        transition: { duration: 0.5 },
       })
     }, 5000)
 
@@ -23,14 +23,20 @@ export default function EnhancedAnimatedHeroWithGrid() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden text-black bg-white">
+      {/* SVG Background */}
       <SVGBackground y1={y1} y2={y2} />
+      
+      {/* Grid Animation */}
       <GridAnimation />
+      
+      {/* Main Content */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="z-10 text-center px-4 sm:px-6 lg:px-8"
       >
+        {/* Glitch Heading */}
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -39,6 +45,8 @@ export default function EnhancedAnimatedHeroWithGrid() {
         >
           <GlitchText text="Hey, I'm Sourav" />
         </motion.div>
+
+        {/* Main Title */}
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -47,6 +55,8 @@ export default function EnhancedAnimatedHeroWithGrid() {
         >
           a web developer with
         </motion.h2>
+
+        {/* Description */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -56,6 +66,8 @@ export default function EnhancedAnimatedHeroWithGrid() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
         </motion.p>
+
+        {/* Animated Stats Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,6 +105,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
   )
 }
 
+// SVG background with motion animations
 function SVGBackground({ y1, y2 }: { y1: MotionValue<number>; y2: MotionValue<number> }) {
   return (
     <svg
@@ -115,6 +128,7 @@ function SVGBackground({ y1, y2 }: { y1: MotionValue<number>; y2: MotionValue<nu
   )
 }
 
+// Grid animation using motion for background movement
 function GridAnimation() {
   const gridSize = 10
   const lines = Array.from({ length: gridSize * 2 + 1 })
@@ -143,7 +157,7 @@ function GridAnimation() {
             transition={{
               repeat: Infinity,
               duration: 10 + index * 0.5,
-              ease: "linear",
+              ease: 'linear',
             }}
             whileHover={{
               opacity: 0.5,
@@ -157,6 +171,7 @@ function GridAnimation() {
   )
 }
 
+// Glitch text effect component
 function GlitchText({ text }: { text: string }) {
   const [isGlitching, setIsGlitching] = useState(false)
 
