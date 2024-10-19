@@ -45,7 +45,7 @@ export default function DevPage() {
                   <span className="text-3xl mb-2">{skill.icon}</span>
                   <span className="text-xs text-center">{skill.name}</span>
                 </div>
-              ))}
+              ))} 
             </div>
             {activeSkill && (
               <div className="mt-4 p-4 bg-gray-700 rounded-lg animate-fade-in">
