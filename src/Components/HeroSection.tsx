@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
-import { useMousePosition } from '@/hooks/use-mouse-position'
+// import { useMousePosition } from '@/hooks/use-mouse-position'
 
 const greetings = [
   "Hello", "Bonjour", "Hola", "Ciao", "Konnichiwa",
