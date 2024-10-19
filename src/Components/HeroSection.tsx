@@ -1,23 +1,21 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion'
+import { motion, useAnimation, useScroll, useTransform, MotionValue } from 'framer-motion'
 import CountUp from 'react-countup'
 
 export default function EnhancedAnimatedHeroWithGrid() {
   const { scrollY } = useScroll()
   const y1 = useTransform(scrollY, [0, 300], [0, 100])
   const y2 = useTransform(scrollY, [0, 300], [0, -100])
-  const [glitchActive, setGlitchActive] = useState(false)
   const glitchControls = useAnimation()
 
   useEffect(() => {
     const glitchInterval = setInterval(() => {
-      setGlitchActive(true)
       glitchControls.start({
         x: [0, -5, 5, -5, 5, 0],
         transition: { duration: 0.5 }
-      }).then(() => setGlitchActive(false))
+      })
     }, 5000)
 
     return () => clearInterval(glitchInterval)
@@ -67,7 +65,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
           {[
             { value: 15, label: 'Web Design', prefix: '+' },
             { value: 25, label: 'Web Development', prefix: '+' },
-            { value: 4, label: 'Open Source Projects',prefix: '+' },
+            { value: 4, label: 'Open Source Projects', prefix: '+' },
             { value: 5, label: 'Clients', prefix: '+' },
           ].map((stat, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md">
@@ -95,7 +93,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
   )
 }
 
-function SVGBackground({ y1, y2 }: { y1: any; y2: any }) {
+function SVGBackground({ y1, y2 }: { y1: MotionValue<number>; y2: MotionValue<number> }) {
   return (
     <svg
       className="absolute inset-0 w-full h-full"
