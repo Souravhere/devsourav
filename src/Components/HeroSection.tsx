@@ -1,111 +1,199 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
-// import { useMousePosition } from '@/hooks/use-mouse-position'
+import React, { useEffect, useState } from 'react'
+import { motion, useAnimation, useScroll, useTransform } from 'framer-motion'
+import CountUp from 'react-countup'
 
-const greetings = [
-  "Hello", "Bonjour", "Hola", "Ciao", "Konnichiwa",
-  "Namaste", "Salaam", "Guten Tag", "Olá",
-]
-
-export default function HeroSection() {
-  const [currentGreeting, setCurrentGreeting] = useState(0)
-  const controls = useAnimation()
-  const mousePosition = useMousePosition()
+export default function EnhancedAnimatedHeroWithGrid() {
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 300], [0, 100])
+  const y2 = useTransform(scrollY, [0, 300], [0, -100])
+  const [glitchActive, setGlitchActive] = useState(false)
+  const glitchControls = useAnimation()
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      controls.start({
-        opacity: 0,
+    const glitchInterval = setInterval(() => {
+      setGlitchActive(true)
+      glitchControls.start({
+        x: [0, -5, 5, -5, 5, 0],
         transition: { duration: 0.5 }
-      }).then(() => {
-        setCurrentGreeting((prev) => (prev + 1) % greetings.length)
-        controls.start({
-          opacity: 1,
-          transition: { duration: 0.5 }
-        })
-      })
-    }, 2000)
+      }).then(() => setGlitchActive(false))
+    }, 5000)
 
-    return () => clearInterval(interval)
-  }, [controls])
+    return () => clearInterval(glitchInterval)
+  }, [glitchControls])
 
   return (
-    <div className="relative min-h-screen bg-[#4c6ee2] overflow-hidden">
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-        <motion.h1
-          className="sm:text-8xl text-5xl font-extrabold mb-4"
-          animate={controls}
-          initial={{ opacity: 1 }}
-        >
-          {greetings[currentGreeting]}!
-        </motion.h1>
-        <h2 className="sm:text-3xl text-2xl mb-2">I&apos;m <span className='font-bold'>Sourav Chhimpa</span></h2>
-        <p className="text-xl italic">Web Designer & Developer.</p>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden text-black bg-white">
+      <SVGBackground y1={y1} y2={y2} />
+      <GridAnimation />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="z-10 text-center px-4 sm:px-6 lg:px-8"
+      >
         <motion.div
-          className="mt-8"
-          initial={{ y: 0 }}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="inline-block bg-yellow-300 rounded-full px-6 py-2 mb-4 relative overflow-hidden"
         >
-          <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M19 12L12 19L5 12" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <GlitchText text="Hey, I'm Sourav" />
         </motion.div>
-      </div>
-
-      {['pink', 'lime', 'black'].map((color, index) => (
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="text-4xl font-bold mb-4"
+        >
+          a web developer with
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        </motion.p>
         <motion.div
-          key={color}
-          className={`absolute w-16 h-16 rounded-full bg-${color}-400`}
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            x: mousePosition.x * 0.05 * (index + 1),
-            y: mousePosition.y * 0.05 * (index + 1),
-          }}
-        />
-      ))}
-
-      {['blue-300', 'blue-400'].map((color, index) => (
-        <motion.div
-          key={color}
-          className={`absolute w-24 h-24 bg-${color}`}
-          style={{
-            clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            x: mousePosition.x * 0.03 * (index + 1),
-            y: mousePosition.y * 0.03 * (index + 1),
-            rotate: 360,
-          }}
-          transition={{ repeat: Infinity, duration: 20 }}
-        />
-      ))}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.5 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center"
+        >
+          {[
+            { value: 15, label: 'Web Design', prefix: '+' },
+            { value: 25, label: 'Web Development', prefix: '+' },
+            { value: 4, label: 'Open Source Projects',prefix: '+' },
+            { value: 5, label: 'Clients', prefix: '+' },
+          ].map((stat, index) => (
+            <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
+              >
+                <h3 className="text-2xl font-bold">
+                  <CountUp
+                    end={stat.value}
+                    duration={2.5}
+                    separator=","
+                    decimals={stat.value % 1 !== 0 ? 1 : 0}
+                    prefix={stat.prefix || ''}
+                  />
+                </h3>
+                <p className="text-sm text-gray-500">{stat.label}</p>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
 
-function useMousePosition() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+function SVGBackground({ y1, y2 }: { y1: any; y2: any }) {
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+    >
+      <motion.path
+        d="M0,0 Q50,50 100,0 V100 H0 Z"
+        fill="rgba(255,255,255,0.1)"
+        style={{ y: y1 }}
+      />
+      <motion.path
+        d="M0,100 Q50,50 100,100 V100 H0 Z"
+        fill="rgba(255,255,255,0.1)"
+        style={{ y: y2 }}
+      />
+    </svg>
+  )
+}
+
+function GridAnimation() {
+  const gridSize = 10
+  const lines = Array.from({ length: gridSize * 2 + 1 })
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="relative w-full h-full">
+        {lines.map((_, index) => (
+          <motion.div
+            key={index}
+            className="absolute bg-gray-600"
+            initial={{
+              opacity: 0.1,
+              [index < gridSize + 1 ? 'width' : 'height']: '100%',
+              [index < gridSize + 1 ? 'height' : 'width']: '1px',
+              [index < gridSize + 1 ? 'top' : 'left']: `${(index % (gridSize + 1)) * (100 / gridSize)}%`,
+            }}
+            animate={{
+              opacity: [0.1, 0.2, 0.1],
+              [index < gridSize + 1 ? 'top' : 'left']: [
+                `${(index % (gridSize + 1)) * (100 / gridSize)}%`,
+                `${((index % (gridSize + 1)) * (100 / gridSize) + 5) % 100}%`,
+                `${(index % (gridSize + 1)) * (100 / gridSize)}%`,
+              ],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 10 + index * 0.5,
+              ease: "linear",
+            }}
+            whileHover={{
+              opacity: 0.5,
+              scale: 1.2,
+              transition: { duration: 0.3 },
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function GlitchText({ text }: { text: string }) {
+  const [isGlitching, setIsGlitching] = useState(false)
 
   useEffect(() => {
-    const updateMousePosition = (ev: MouseEvent) => {
-      setMousePosition({ x: ev.clientX, y: ev.clientY })
-    }
+    const glitchInterval = setInterval(() => {
+      setIsGlitching(true)
+      setTimeout(() => setIsGlitching(false), 200)
+    }, 5000)
 
-    window.addEventListener('mousemove', updateMousePosition)
-
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition)
-    }
+    return () => clearInterval(glitchInterval)
   }, [])
 
-  return mousePosition
+  return (
+    <div className="relative">
+      <h1 className="text-2xl font-bold">{text}</h1>
+      {isGlitching && (
+        <>
+          <motion.div
+            className="absolute inset-0 text-2xl font-bold text-red-500"
+            style={{ clipPath: 'inset(50% 0 0 0)', transform: 'translateX(-2px)' }}
+            animate={{ clipPath: ['inset(50% 0 0 0)', 'inset(0% 0 0 0)', 'inset(50% 0 0 0)'] }}
+            transition={{ duration: 0.2, repeat: 2, repeatType: 'reverse' }}
+          >
+            {text}
+          </motion.div>
+          <motion.div
+            className="absolute inset-0 text-2xl font-bold text-blue-500"
+            style={{ clipPath: 'inset(0 0 50% 0)', transform: 'translateX(2px)' }}
+            animate={{ clipPath: ['inset(0 0 50% 0)', 'inset(0 0 0% 0)', 'inset(0 0 50% 0)'] }}
+            transition={{ duration: 0.2, repeat: 2, repeatType: 'reverse' }}
+          >
+            {text}
+          </motion.div>
+        </>
+      )}
+    </div>
+  )
 }
