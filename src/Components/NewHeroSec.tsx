@@ -53,7 +53,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="text-4xl font-bold mb-4"
         >
-          a web developer with
+          a freelancer developer
         </motion.h2>
 
         {/* Description */}
@@ -63,8 +63,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
           transition={{ delay: 0.7, duration: 0.5 }}
           className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+           I create stunning animated websites that engage users. With 2+ years of experience using GSAP, Framer Motion, Three.js, and React Three Fiber, I deliver dynamic web experiences for my clients.
         </motion.p>
 
         {/* Animated Stats Grid */}
@@ -89,7 +88,8 @@ export default function EnhancedAnimatedHeroWithGrid() {
                 <h3 className="text-2xl font-bold">
                   <CountUp
                     end={stat.value}
-                    duration={2.5}
+                    delay={1}
+                    duration={8}
                     separator=","
                     decimals={stat.value % 1 !== 0 ? 1 : 0}
                     prefix={stat.prefix || ''}
