@@ -1,114 +1,176 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { motion, useAnimation, useScroll } from 'framer-motion'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
-export default function AnimatedFloatingNavbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const controls = useAnimation()
-  const { scrollY } = useScroll()
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Works', path: '/works' },
+  { name: 'Twitter', path: '/twitter' },
+  { name: 'Dribbble', path: '/dribbble' },
+  { name: 'LinkedIn', path: '/linkedin' },
+]
+
+export default function UpdatedFloatingNavbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showHeader, setShowHeader] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+  const pathname = usePathname()
 
   useEffect(() => {
-    let lastScrollY = 0
-    
-    const updateNavbar = () => {
-      const currentScrollY = scrollY.get()
-      if (currentScrollY > lastScrollY) {
-        controls.start({ y: '-100%' })
-      } else {
-        controls.start({ y: '0%' })
+    setIsMenuOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+          setShowHeader(false)
+        } else {
+          setShowHeader(true)
+        }
+        setLastScrollY(window.scrollY)
       }
-      lastScrollY = currentScrollY
     }
 
-    const unsubscribe = scrollY.on('change', updateNavbar)
-    return () => unsubscribe()
-  }, [controls, scrollY])
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
 
   return (
-    <motion.nav
-      className="fixed top-4 w-full transform -translate-x-1/2 bg-white shadow-lg rounded-full z-50"
-      initial={{ y: 0 }}
-      animate={controls}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16">
-          <div className="flex items-center">
-            <motion.div
-              className="flex-shrink-0"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
+    <AnimatePresence>
+      {showHeader && (
+        <motion.header
+          className="fixed top-4 transform -translate-x-1/2 bg-white shadow-lg rounded-full z-50 w-[90%] mx-[5%]"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -100, opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        >
+          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+            <Link href="/" className="flex items-center">
+              <div className="w-10 h-10 bg-[#fde047] rounded-full flex items-center justify-center">
+                <span className="text-black font-bold text-xl">S</span>
               </div>
-            </motion.div>
-          </div>
-          <div className="hidden md:block ml-10">
-            <div className="flex items-baseline space-x-4">
-              {['About', 'Works', 'Twitter', 'Dribbble', 'LinkedIn'].map((item) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item}
-                </motion.a>
+            </Link>
+
+            <nav className="hidden md:flex space-x-8">
+              {navItems.map((item) => (
+                <NavLink key={item.name} href={item.path} isActive={pathname === item.path}>
+                  {item.name}
+                </NavLink>
               ))}
-            </div>
-          </div>
-          <div className="hidden md:block ml-6">
+            </nav>
+
             <motion.button
-              className="bg-yellow-400 text-white px-4 py-2 rounded-full text-sm font-medium"
-              whileHover={{ scale: 1.05 }}
+              className="md:hidden z-20 text-gray-600"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
               whileTap={{ scale: 0.95 }}
             >
-              Contact Us
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </motion.button>
-          </div>
-          <div className="md:hidden ml-auto">
-            <motion.button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </motion.button>
-          </div>
-        </div>
-      </div>
 
-      {/* Mobile menu */}
-      <motion.div
-        className={`md:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-lg ${isOpen ? 'block' : 'hidden'}`}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          {['About', 'Works', 'Twitter', 'Dribbble', 'LinkedIn'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              {item}
-            </a>
-          ))}
-          <a
-            href="#pricing"
-            className="bg-yellow-400 text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Contact Us
-          </a>
-        </div>
-      </motion.div>
-    </motion.nav>
+            <Link href="/contact" className="hidden md:block">
+              <motion.div
+                className="bg-[#fde047] text-black px-6 py-2 rounded-full text-sm font-medium"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Us
+              </motion.div>
+            </Link>
+          </div>
+
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.nav
+                className="md:hidden bg-white py-4 fixed top-20 left-0 w-full h-[calc(100vh-80px)] flex flex-col rounded-b-3xl shadow-lg"
+                initial={{ y: '-100%', opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: '-100%', opacity: 0 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              >
+                <motion.div
+                  className="flex flex-col space-y-4"
+                  initial="closed"
+                  animate="open"
+                  variants={{
+                    closed: { opacity: 0 },
+                    open: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+                  }}
+                >
+                  {navItems.map((item) => (
+                    <motion.div
+                      key={item.name}
+                      variants={{
+                        closed: { y: 20, opacity: 0 },
+                        open: { y: 0, opacity: 1 },
+                      }}
+                    >
+                      <NavLink href={item.path} isActive={pathname === item.path} mobile>
+                        {item.name}
+                      </NavLink>
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    variants={{
+                      closed: { y: 20, opacity: 0 },
+                      open: { y: 0, opacity: 1 },
+                    }}
+                  >
+                    <Link href="/contact" className="block text-center bg-[#fde047] text-black mx-4 my-2 px-6 py-3 rounded-full hover:bg-yellow-500 transition-colors">
+                      Contact Us
+                    </Link>
+                  </motion.div>
+                </motion.div>
+              </motion.nav>
+            )}
+          </AnimatePresence>
+        </motion.header>
+      )}
+    </AnimatePresence>
+  )
+}
+
+interface NavLinkProps {
+  href: string
+  isActive: boolean
+  children: React.ReactNode
+  mobile?: boolean
+}
+
+function NavLink({ href, isActive, children, mobile = false }: NavLinkProps) {
+  return (
+    <Link
+      href={href}
+      className={`${
+        mobile ? 'block py-3 px-4 text-center text-xl' : 'inline-block'
+      } relative font-medium transition-colors hover:text-gray-900 text-sm ${
+        isActive ? 'text-gray-900' : 'text-gray-600'
+      }`}
+    >
+      {children}
+      {isActive && (
+        <motion.div
+          className="absolute -bottom-1 left-0 w-full h-0.5 bg-gray-900"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
+    </Link>
   )
 }

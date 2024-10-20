@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
-import AnimatedFloatingNavbar from "@/Components/Navbar";
+// import AnimatedFloatingNavbar from "@/Components/Navbar";
+import UpdatedFloatingNavbar from "@/Components/Navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,9 +36,10 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AnimatedFloatingNavbar/>
+        {/* <AnimatedFloatingNavbar/> */}
+        <UpdatedFloatingNavbar/>
         {children}
       </body>
     </html>
