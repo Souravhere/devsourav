@@ -10,9 +10,9 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Works', path: '/works' },
-  { name: 'Twitter', path: '/twitter' },
-  { name: 'Dribbble', path: '/dribbble' },
-  { name: 'LinkedIn', path: '/linkedin' },
+  { name: 'Service', path: '/service' },
+  { name: 'Resources', path: '/resources' },
+  { name: 'Blog', path: '/blog' },
 ]
 
 export default function UpdatedFloatingNavbar() {
