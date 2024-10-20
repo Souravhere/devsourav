@@ -28,7 +28,7 @@ export default function AnimatedFloatingNavbar() {
 
   return (
     <motion.nav
-      className="fixed top-4 transform -translate-x-1/2 bg-white shadow-lg rounded-full z-50 min-w-96"
+      className="fixed top-4 w-full transform -translate-x-1/2 bg-white shadow-lg rounded-full z-50"
       initial={{ y: 0 }}
       animate={controls}
       transition={{ duration: 0.3 }}
@@ -41,8 +41,8 @@ export default function AnimatedFloatingNavbar() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <div className="w-10 h-10 bg-[#fde047] rounded-full flex items-center justify-center">
-                <span className="text-black font-bold text-xl">S</span>
+              <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xl">S</span>
               </div>
             </motion.div>
           </div>
