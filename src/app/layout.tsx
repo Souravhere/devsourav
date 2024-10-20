@@ -36,7 +36,7 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
         {/* <AnimatedFloatingNavbar/> */}
         <UpdatedFloatingNavbar/>

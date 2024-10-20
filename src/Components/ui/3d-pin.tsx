@@ -1,31 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export const PinContainer = ({
   children,
   title,
-  onTap,
+  href,
   className,
   containerClassName,
 }: {
   children: React.ReactNode;
-  title?: string;
-  onTap?: () => void;
+  title: string;
+  href: string;
   className?: string;
   containerClassName?: string;
 }) => {
+  const router = useRouter();
+  const [isHovered, setIsHovered] = useState(false);
+  const [counter, setCounter] = useState(5);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isHovered) {
+      interval = setInterval(() => {
+        setCounter((prev) => {
+          if (prev === 1) {
+            clearInterval(interval);
+            router.push(href);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      setCounter(5);
+    }
+    return () => clearInterval(interval);
+  }, [isHovered, href, router]);
+
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
 
   const onMouseEnter = () => {
+    setIsHovered(true);
     setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
+    controls.start({ scale: 1.05, transition: { duration: 0.3 } });
   };
+
   const onMouseLeave = () => {
+    setIsHovered(false);
     setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
+    controls.start({ scale: 1, transition: { duration: 0.3 } });
+    setCounter(4);
   };
 
   return (
@@ -36,7 +67,6 @@ export const PinContainer = ({
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={onTap}
     >
       <div
         style={{
@@ -55,6 +85,16 @@ export const PinContainer = ({
         </div>
       </div>
       <PinPerspective title={title} />
+      {isHovered && (
+        <motion.div
+          className="absolute bottom-4 right-4 bg-[#ffef5c] text-black rounded-full w-10 h-10 flex items-center justify-center font-bold z-50"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0 }}
+        >
+          {counter}
+        </motion.div>
+      )}
     </div>
   );
 };
@@ -62,7 +102,7 @@ export const PinContainer = ({
 export const PinPerspective = ({
   title,
 }: {
-  title?: string;
+  title: string;
 }) => {
   return (
     <motion.div className="pointer-events-none w-96 h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
