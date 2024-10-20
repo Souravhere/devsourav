@@ -67,7 +67,7 @@ export default function AnimatedFloatingNavbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Pricing ~ it's free
+              Contact Us
             </motion.button>
           </div>
           <div className="md:hidden ml-auto">
