@@ -61,27 +61,27 @@ export default function UpdatedFloatingNavbar() {
         >
           <div className="container mx-auto px-4 h-16 flex items-center justify-between">
             
-            <div className='flex items-center justify-center gap-3'>
-              <motion.button
-              className="md:hidden z-20 text-gray-600"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              whileTap={{ scale: 0.95 }}
-            >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </motion.button>
             <Link href="/" className="flex items-center">
               <div className="w-10 h-10 bg-[#fde047] rounded-full flex items-center justify-center">
                 <span className="text-black font-bold text-xl">S</span>
               </div>
             </Link>
-          </div>
-          {/* Here is contact button for the mobile header */}
-          <Link href="/" className="md:hidden flex items-center">
+            <div className='flex items-center justify-center gap-3'>
+              {/* Here is contact button for the mobile header */}
+            <Link href="/contact" className="md:hidden flex items-center">
               <div className="bg-[#fde047] rounded-full px-3 h-10 flex items-center justify-center">
-                <span className="text-black font-semibold text-xl">Contact</span>
+                <span className="text-black text-xl">Contact</span>
               </div>
             </Link>
+            <motion.button
+              className="md:hidden z-20 text-gray-600"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              whileTap={{ scale: 0.95 }}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={30} />}
+            </motion.button>
+            </div>
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
                 <NavLink key={item.name} href={item.path} isActive={pathname === item.path}>
