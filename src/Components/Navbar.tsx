@@ -105,7 +105,7 @@ export default function AnimatedFloatingNavbar() {
             href="#pricing"
             className="bg-yellow-400 text-white block px-3 py-2 rounded-md text-base font-medium"
           >
-            Pricing ~ it's free
+            Contact Us
           </a>
         </div>
       </motion.div>
