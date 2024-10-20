@@ -1,10 +1,11 @@
-import HeroSection from "@/Components/HeroSection";
+import EnhancedAnimatedHeroWithGrid from "@/Components/HeroSection"
+
 
 
 export default function Home() {
   return (
     <div className="w-full mx-auto">
-      <HeroSection/>
+      <EnhancedAnimatedHeroWithGrid/>
       <div className="w-full h-screen bg-red-400"></div>
     </div>
   );
