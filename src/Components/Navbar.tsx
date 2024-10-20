@@ -70,7 +70,7 @@ export default function UpdatedFloatingNavbar() {
               {/* Here is contact button for the mobile header */}
             <Link href="/contact" className="md:hidden flex items-center">
               <div className="bg-[#fde047] rounded-full px-3 h-10 flex items-center justify-center">
-                <span className="text-black text-xl">Contact</span>
+                <span className="text-black text-base">Contact</span>
               </div>
             </Link>
             <motion.button
