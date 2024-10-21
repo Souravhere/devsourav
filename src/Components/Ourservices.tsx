@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { animate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { FaFigma, FaPinterest, FaDribbble, FaJs, FaReact } from "react-icons/fa";
-import { TbBrandNextjs, TbBrandVscode } from "react-icons/tb";
+import { TbBrandNextjs } from "react-icons/tb";
 import { AiOutlineAudit } from "react-icons/ai";
 import { SiGoogleanalytics } from "react-icons/si";
 import { IconType } from "react-icons";
@@ -103,7 +103,7 @@ const Card: React.FC<CardProps> = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "max-w-sm w-full mx-auto p-8 rounded-xl border border-gray-200 bg-white shadow-lg group my-5",
+        "max-w-sm w-full p-8 rounded-xl border border-gray-200 bg-white shadow-lg group my-5 sm:mx-0 mx-3",
         className
       )}
     >
@@ -200,7 +200,7 @@ export const OurServices: React.FC = () => {
         <ServiceCard
           title="Web Development"
           description="Build robust, scalable web applications using cutting-edge technologies."
-          icons={[FaJs, FaReact, TbBrandNextjs, TbBrandVscode]}
+          icons={[FaJs, FaReact, TbBrandNextjs]}
         />
         <ServiceCard
           title="Testing and SEO"
