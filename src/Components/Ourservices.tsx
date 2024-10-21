@@ -82,12 +82,12 @@ const Sparkles: React.FC = () => {
             position: "absolute",
             top: `${random() * 100}%`,
             left: `${random() * 100}%`,
-            width: `2px`,
-            height: `2px`,
+            width: `3px`,
+            height: `3px`,
             borderRadius: "50%",
             zIndex: 1,
           }}
-          className="inline-block bg-gray-300"
+          className="inline-block bg-blue-700"
         ></motion.span>
       ))}
     </div>
@@ -191,7 +191,7 @@ export const OurServices: React.FC = () => {
   return (
     <div className="bg-white py-16">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Our Services</h2>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center sm:gap-8 gap-0">
         <ServiceCard
           title="Web Design"
           description="Create stunning, user-friendly designs that captivate your audience."
