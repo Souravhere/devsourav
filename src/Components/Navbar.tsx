@@ -62,14 +62,14 @@ export default function UpdatedFloatingNavbar() {
           <div className="container mx-auto px-4 h-16 flex items-center justify-between">
             
             <Link href="/" className="flex items-center">
-              <div className="w-10 h-10 bg-[#fde047] rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#f6ff68] rounded-full flex items-center justify-center">
                 <span className="text-black font-bold text-xl">S</span>
               </div>
             </Link>
             <div className='flex items-center justify-center gap-3'>
               {/* Here is contact button for the mobile header */}
             <Link href="/contact" className="md:hidden flex items-center">
-              <div className="bg-[#fde047] rounded-full px-3 h-10 flex items-center justify-center">
+              <div className="bg-[#f6ff68] rounded-full px-3 h-10 flex items-center justify-center">
                 <span className="text-black text-base">Contact</span>
               </div>
             </Link>
@@ -92,7 +92,7 @@ export default function UpdatedFloatingNavbar() {
 
             <Link href="/contact" className="hidden md:block">
               <motion.div
-                className="bg-[#fde047] text-black px-6 py-2 rounded-full text-sm font-medium"
+                className="bg-[#f6ff68] text-black px-6 py-2 rounded-full text-sm font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -138,7 +138,7 @@ export default function UpdatedFloatingNavbar() {
                       open: { y: 0, opacity: 1 },
                     }}
                   >
-                    <Link href="/contact" className="block text-center bg-[#fde047] text-black mx-4 my-2 px-6 py-3 rounded-full hover:bg-yellow-500 transition-colors">
+                    <Link href="/contact" className="block text-center bg-[#f6ff68] text-black mx-4 my-2 px-6 py-3 rounded-full hover:bg-[#f5ff68ad] transition-colors">
                       Contact Us
                     </Link>
                   </motion.div>

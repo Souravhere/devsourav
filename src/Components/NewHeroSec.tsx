@@ -41,7 +41,7 @@ export default function EnhancedAnimatedHeroWithGrid() {
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="inline-block bg-yellow-300 rounded-full px-6 py-2 mb-4 relative overflow-hidden"
+          className="inline-block bg-[#f6ff68] rounded-full px-6 py-2 mb-4 relative overflow-hidden"
         >
           <GlitchText text="Hey, I'm Sourav" />
         </motion.div>
