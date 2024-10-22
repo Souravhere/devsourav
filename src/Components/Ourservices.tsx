@@ -48,6 +48,7 @@ const IconSkeleton: React.FC<{ icons: IconType[] }> = ({ icons }) => {
 
   useEffect(() => {
     animate(sequence(), {
+       // @ts-ignore
       repeat: Infinity,
       repeatDelay: 1,
     });
