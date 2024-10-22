@@ -3,6 +3,7 @@ import { OurServices } from "@/Components/Ourservices";
 import { RecentProjects } from "@/Components/RecentProjects";
 
 import { RecentProjectsWithBackground } from "@/Components/RecentProjectsWithBackground"
+import { TabsDemo } from "@/Components/Tabs";
 
 
 
@@ -13,6 +14,7 @@ export default function Home() {
         <OurServices/>
         <RecentProjects/>
         <RecentProjectsWithBackground/>
+        <TabsDemo/>
       <div className="w-full h-[200vh] bg-red-400"></div>
     </div>
   );
