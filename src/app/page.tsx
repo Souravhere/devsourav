@@ -1,5 +1,6 @@
 import EnhancedAnimatedHeroWithGrid from "@/Components/NewHeroSec"
-import { OurServices } from "@/Components/Ourservices";
+import OurServices from "@/Components/Ourservices";
+
 import { RecentProjects } from "@/Components/RecentProjects";
 
 

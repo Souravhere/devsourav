@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { animate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { FaFigma, FaPinterest, FaDribbble, FaJs, FaReact } from "react-icons/fa";
@@ -28,28 +28,30 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icons }) 
 };
 
 const IconSkeleton: React.FC<{ icons: IconType[] }> = ({ icons }) => {
-  const sequence = icons.map((_, index) => [
+  const sequence = useCallback(() => icons.map((_, index) => [
     `.circle-${index + 1}`,
     {
       scale: [1, 1.1, 1],
       transform: ["translateY(0px)", "translateY(-4px)", "translateY(0px)"],
     },
     { duration: 0.8 },
-  ]);
+  ]), [icons]);
 
   useEffect(() => {
-    animate(sequence, {
+    const animation = animate(sequence(), {
       repeat: Infinity,
       repeatDelay: 1,
     });
-  }, []);
+
+    return () => animation.stop();
+  }, [sequence]);
 
   return (
-    <div className="p-8 overflow-hidden h-full relative flex items-center justify-center">
-      <div className="flex flex-row flex-wrap justify-center items-center gap-4">
+    <div className="p-4 overflow-hidden h-full relative flex items-center justify-center">
+      <div className="flex flex-row flex-wrap justify-center items-center gap-2">
         {icons.map((Icon, index) => (
-          <Container key={index} className={`h-16 w-16 circle-${index + 1}`}>
-            <Icon className="h-8 w-8 text-gray-600" />
+          <Container key={index} className={`h-12 w-12 circle-${index + 1}`}>
+            <Icon className="h-6 w-6 text-gray-600" />
           </Container>
         ))}
       </div>
@@ -88,22 +90,17 @@ const Sparkles: React.FC = () => {
             zIndex: 1,
           }}
           className="inline-block bg-blue-700"
-        ></motion.span>
+        />
       ))}
     </div>
   );
 };
 
-interface CardProps {
-  className?: string;
-  children: React.ReactNode;
-}
-
-const Card: React.FC<CardProps> = ({ className, children }) => {
+const Card: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "max-w-sm w-full p-8 rounded-xl border border-gray-200 bg-white shadow-lg group my-5 sm:mx-0 mx-3",
+        "max-w-sm w-full p-6 rounded-xl border border-gray-200 bg-white shadow-lg group my-4 sm:mx-0 mx-2",
         className
       )}
     >
@@ -112,52 +109,27 @@ const Card: React.FC<CardProps> = ({ className, children }) => {
   );
 };
 
-interface CardTitleProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-const CardTitle: React.FC<CardTitleProps> = ({ children, className }) => {
+const CardTitle: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ children, className }) => {
   return (
-    <h3
-      className={cn(
-        "text-xl font-semibold text-gray-800 py-2",
-        className
-      )}
-    >
+    <h3 className={cn("text-xl font-semibold text-gray-800 py-2", className)}>
       {children}
     </h3>
   );
 };
 
-interface CardDescriptionProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-const CardDescription: React.FC<CardDescriptionProps> = ({ children, className }) => {
+const CardDescription: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ children, className }) => {
   return (
-    <p
-      className={cn(
-        "text-sm font-normal text-gray-600 max-w-sm",
-        className
-      )}
-    >
+    <p className={cn("text-sm font-normal text-gray-600 max-w-sm", className)}>
       {children}
     </p>
   );
 };
 
-interface CardSkeletonContainerProps {
-  className?: string;
-  children: React.ReactNode;
-}
-
-const CardSkeletonContainer: React.FC<CardSkeletonContainerProps> = ({ className, children }) => {
+const CardSkeletonContainer: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "h-[15rem] md:h-[20rem] rounded-xl z-40",
+        "h-[12rem] md:h-[16rem] rounded-xl z-40",
         className,
         "bg-gray-50 [mask-image:radial-gradient(50%_50%_at_50%_50%,white_0%,transparent_100%)]"
       )}
@@ -167,18 +139,11 @@ const CardSkeletonContainer: React.FC<CardSkeletonContainerProps> = ({ className
   );
 };
 
-interface ContainerProps {
-  className?: string;
-  children: React.ReactNode;
-}
-
-const Container: React.FC<ContainerProps> = ({ className, children }) => {
+const Container: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ className, children }) => {
   return (
     <div
       className={cn(
-        `rounded-full flex items-center justify-center bg-white
-    shadow-[0px_0px_8px_0px_rgba(0,0,0,0.1)]
-    `,
+        "rounded-full flex items-center justify-center bg-white shadow-[0px_0px_8px_0px_rgba(0,0,0,0.1)]",
         className
       )}
     >
@@ -187,11 +152,11 @@ const Container: React.FC<ContainerProps> = ({ className, children }) => {
   );
 };
 
-export const OurServices: React.FC = () => {
+export default function OurServices() {
   return (
-    <div className="bg-white py-16">
-      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Our Services</h2>
-      <div className="flex flex-wrap justify-center sm:gap-8 gap-0">
+    <div className="bg-white py-12">
+      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Our Services</h2>
+      <div className="flex flex-wrap justify-center sm:gap-6 gap-0">
         <ServiceCard
           title="Web Design"
           description="Create stunning, user-friendly designs that captivate your audience."
@@ -210,4 +175,4 @@ export const OurServices: React.FC = () => {
       </div>
     </div>
   );
-};
+}
