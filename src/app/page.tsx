@@ -2,8 +2,6 @@ import EnhancedAnimatedHeroWithGrid from "@/Components/NewHeroSec"
 import { OurServices } from "@/Components/Ourservices";
 import { RecentProjects } from "@/Components/RecentProjects";
 
-import { RecentProjectsWithBackground } from "@/Components/RecentProjectsWithBackground";
-
 
 
 export default function Home() {
@@ -12,8 +10,9 @@ export default function Home() {
         <EnhancedAnimatedHeroWithGrid/>
         <OurServices/>
         <RecentProjects/>
-        <RecentProjectsWithBackground/>
-      <div className="w-full h-[200vh] bg-red-400"></div>
+      <div className="w-full h-[100vh] bg-red-400 flex items-center justify-center text-3xl">
+        new comp soon
+      </div>
     </div>
   );
 }
