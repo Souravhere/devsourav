@@ -48,11 +48,12 @@ const IconSkeleton: React.FC<{ icons: IconType[] }> = ({ icons }) => {
 
   useEffect(() => {
     animate(sequence(), {
-      // @ts-expect-error
+      // @ts-expect-error: TypeScript doesn't recognize the 'repeat' and 'repeatDelay' properties here
       repeat: Infinity,
       repeatDelay: 1,
     });
-  }, [animate, sequence]);  
+  }, [animate, sequence]);
+  
 
   return (
     <div ref={scope} className="p-4 overflow-hidden h-full relative flex items-center justify-center">
