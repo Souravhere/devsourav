@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, gi
           className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         />
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-        <div className="text relative z-10 bg-white p-3">
+        <div className="text relative z-10 backdrop-blur- p-3 rounded-l-xl">
           <h2 className="font-bold text-xl md:text-2xl text-black ">{title}</h2>
           <p className="font-normal text-sm md:text-base text-black my-2 ">{description}</p>
         </div>
