@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useCallback } from "react";
-import { animate, motion } from "framer-motion";
+import { useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { FaFigma, FaPinterest, FaDribbble, FaJs, FaReact } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
@@ -28,26 +29,32 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icons }) 
 };
 
 const IconSkeleton: React.FC<{ icons: IconType[] }> = ({ icons }) => {
-  const sequence = useCallback(() => icons.map((_, index) => [
-    `.circle-${index + 1}`,
-    {
-      scale: [1, 1.1, 1],
-      transform: ["translateY(0px)", "translateY(-4px)", "translateY(0px)"],
-    },
-    { duration: 0.8 },
-  ]), [icons]);
+  const [scope, animate] = useAnimate();
+
+  const sequence = useCallback(() => 
+    icons.flatMap((_, index) => [
+      [
+        `.circle-${index + 1}`,
+        { scale: 1.1, y: -4 },
+        { duration: 0.4 }
+      ],
+      [
+        `.circle-${index + 1}`,
+        { scale: 1, y: 0 },
+        { duration: 0.4 }
+      ]
+    ]),
+  [icons]);
 
   useEffect(() => {
-    const animation = animate(sequence(), {
+    animate(sequence(), {
       repeat: Infinity,
       repeatDelay: 1,
     });
-
-    return () => animation.stop();
-  }, [sequence]);
+  }, [animate, sequence]);
 
   return (
-    <div className="p-4 overflow-hidden h-full relative flex items-center justify-center">
+    <div ref={scope} className="p-4 overflow-hidden h-full relative flex items-center justify-center">
       <div className="flex flex-row flex-wrap justify-center items-center gap-2">
         {icons.map((Icon, index) => (
           <Container key={index} className={`h-12 w-12 circle-${index + 1}`}>
