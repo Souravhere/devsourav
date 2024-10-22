@@ -43,17 +43,14 @@ const IconSkeleton: React.FC<{ icons: IconType[] }> = ({ icons }) => {
         { scale: 1, y: 0 },
         { duration: 0.4 }
       ]
-    ]), [icons]
-  );
+    ]),
+  [icons]);
 
   useEffect(() => {
-    const animation = async () => {
-      while (true) {
-        await animate(sequence());
-        await new Promise(resolve => setTimeout(resolve, 1000));  // 1s delay between repeats
-      }
-    };
-    animation();
+    animate(sequence(), {
+      repeat: Infinity,
+      repeatDelay: 1,
+    });
   }, [animate, sequence]);
 
   return (
