@@ -48,11 +48,11 @@ const IconSkeleton: React.FC<{ icons: IconType[] }> = ({ icons }) => {
 
   useEffect(() => {
     animate(sequence(), {
-       // @ts-ignore
+      // @ts-expect-error
       repeat: Infinity,
       repeatDelay: 1,
     });
-  }, [animate, sequence]);
+  }, [animate, sequence]);  
 
   return (
     <div ref={scope} className="p-4 overflow-hidden h-full relative flex items-center justify-center">
