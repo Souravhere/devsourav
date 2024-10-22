@@ -54,8 +54,8 @@ export function RecentProjects() {
     {
       title: "Responsive Design",
       description: "A fully responsive web application built with modern technologies.",
-      image: "/images/project2.jpg",
-      gif: "/images/project2.gif",
+      image: "/Hflag-project-card.png",
+      gif: "/backgound.webp",
     },
     {
       title: "Interactive UI",
