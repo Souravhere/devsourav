@@ -7,12 +7,12 @@ import { MdArrowOutward } from "react-icons/md";
 
 interface ProjectCardProps {
   title: string;
-  description: string;
+  link: string;
   image: string;
   gif: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, gif }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, link, image, gif }) => {
   return (
     <div className="w-full sm:w-1/2 md:w-1/3 p-4 mx-auto flex items-center justify-center">
       <div
@@ -38,9 +38,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, gi
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
         <div className="text relative z-10 backdrop-blur- p-3 rounded-l-xl">
           <h2 className="font-bold text-xl md:text-2xl text-black hidden ">{title}</h2>
-          <p className="font-normal text-sm md:text-base text-black my-2 hidden">{description}</p>
           <div className="flex items-center">
-          <Link href=''
+          <Link href={link}
            className="bg-[#f6ff68] px-3 py-1 rounded-full flex items-center justify-center"
           >
             More Info  <MdArrowOutward size={20}/>
@@ -56,19 +55,19 @@ export function RecentProjects() {
   const projects: ProjectCardProps[] = [
     {
       title: "Hashpet",
-      description: "This project showcases dynamic background overlays with hover effects.",
+      link: "/projects/hflag",
       image: "/Projects/Hflag-project-card.svg",
       gif: "/backgound.webp",
     },
     {
       title: "Hflag",
-      description: "A fully responsive web application built with modern technologies.",
+      link: "A fully responsive web application built with modern technologies.",
       image: "/Projects/Hashpet-project-card.svg",
       gif: "/backgound.webp",
     },
     {
       title: "Byyte",
-      description: "An interactive user interface with smooth animations and transitions.",
+      link: "An interactive user interface with smooth animations and transitions.",
       image: "/Projects/Byyte-project-card.svg",
       gif: "/backgound.webp",
     },
