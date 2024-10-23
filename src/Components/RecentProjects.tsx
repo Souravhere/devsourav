@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
+import { MdArrowOutward } from "react-icons/md";
 
 interface ProjectCardProps {
   title: string;
@@ -34,9 +36,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, gi
           className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         />
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-        <div className="text relative z-10 backdrop-blur- p-3 rounded-l-xl hidden">
-          <h2 className="font-bold text-xl md:text-2xl text-black ">{title}</h2>
-          <p className="font-normal text-sm md:text-base text-black my-2 ">{description}</p>
+        <div className="text relative z-10 backdrop-blur- p-3 rounded-l-xl">
+          {/* <h2 className="font-bold text-xl md:text-2xl text-black ">{title}</h2>
+          <p className="font-normal text-sm md:text-base text-black my-2 ">{description}</p> */}
+          <div className="flex items-center">
+          <Link href=''
+           className="bg-[#f6ff68] px-3 py-1 rounded-full flex items-center justify-center"
+          >
+            More Info  <MdArrowOutward size={20}/>
+          </Link>
+          </div>
         </div>
       </div>
     </div>
@@ -48,19 +57,19 @@ export function RecentProjects() {
     {
       title: "Hashpet",
       description: "This project showcases dynamic background overlays with hover effects.",
-      image: "/Hflag-project-card2.png",
+      image: "/Projects/Hflag-project-card.svg",
       gif: "/backgound.webp",
     },
     {
       title: "Hflag",
       description: "A fully responsive web application built with modern technologies.",
-      image: "/Hflag-project-card3.png",
+      image: "/Projects/Hflag-project-card.svg",
       gif: "/backgound.webp",
     },
     {
       title: "Byyte",
       description: "An interactive user interface with smooth animations and transitions.",
-      image: "/Hflag-project-card.png",
+      image: "/Projects/Hflag-project-card.svg",
       gif: "/backgound.webp",
     },
   ];
