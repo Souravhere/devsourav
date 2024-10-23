@@ -69,7 +69,7 @@ export function RecentProjects() {
     {
       title: "Byyte",
       description: "An interactive user interface with smooth animations and transitions.",
-      image: "/Projects/Hflag-project-card.svg",
+      image: "/Projects/Byyte-project-card.svg",
       gif: "/backgound.webp",
     },
   ];
