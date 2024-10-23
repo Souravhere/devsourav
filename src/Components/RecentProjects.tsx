@@ -54,20 +54,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, link, image, gif }) =>
 export function RecentProjects() {
   const projects: ProjectCardProps[] = [
     {
-      title: "Hashpet",
+      title: "Hflag",
       link: "/projects/hflag",
       image: "/Projects/Hflag-project-card.svg",
       gif: "/backgound.webp",
     },
     {
-      title: "Hflag",
-      link: "A fully responsive web application built with modern technologies.",
+      title: "Hashpet",
+      link: "/projects/hashpet",
       image: "/Projects/Hashpet-project-card.svg",
       gif: "/backgound.webp",
     },
     {
       title: "Byyte",
-      link: "An interactive user interface with smooth animations and transitions.",
+      link: "/projects/byyte",
       image: "/Projects/Byyte-project-card.svg",
       gif: "/backgound.webp",
     },
