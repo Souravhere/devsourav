@@ -40,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, link, image, gif }) =>
           <h2 className="font-bold text-xl md:text-2xl text-black hidden ">{title}</h2>
           <div className="flex items-center">
           <Link href={link}
-           className="bg-[#f6ff68] px-3 py-1 rounded-full flex items-center justify-center"
+           className="bg-[#f6ff68] px-3 py-1 rounded-full flex items-center justify-center hover:scale-110 duration-500 hover:bg-[#f5ff68b9]"
           >
             More Info  <MdArrowOutward size={20}/>
           </Link>
