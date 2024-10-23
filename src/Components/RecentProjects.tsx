@@ -17,7 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, gi
     <div className="w-full sm:w-1/2 md:w-1/3 p-4 mx-auto flex items-center justify-center">
       <div
         className={cn(
-          "group w-full sm:max-w-[300px] mx-w-[340px] cursor-pointer overflow-hidden relative card sm:h-96 h-[400px] rounded-md shadow-xl flex flex-col justify-end p-4 border text-black",
+          "group w-full sm:max-w-[300px] mx-w-[340px] cursor-pointer overflow-hidden relative card sm:h-96 h-[460px] rounded-md shadow-xl flex flex-col justify-end p-4 border text-black",
           "transition-all duration-500"
         )}
       >
