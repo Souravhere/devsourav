@@ -37,8 +37,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, gi
         />
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
         <div className="text relative z-10 backdrop-blur- p-3 rounded-l-xl">
-          {/* <h2 className="font-bold text-xl md:text-2xl text-black ">{title}</h2>
-          <p className="font-normal text-sm md:text-base text-black my-2 ">{description}</p> */}
+          <h2 className="font-bold text-xl md:text-2xl text-black hidden ">{title}</h2>
+          <p className="font-normal text-sm md:text-base text-black my-2 hidden">{description}</p>
           <div className="flex items-center">
           <Link href=''
            className="bg-[#f6ff68] px-3 py-1 rounded-full flex items-center justify-center"
