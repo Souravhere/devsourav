@@ -1,3 +1,4 @@
+import { CoverDemo } from "@/Components/Intractivetext";
 import EnhancedAnimatedHeroWithGrid from "@/Components/NewHeroSec"
 import OurServices from "@/Components/Ourservices";
 
@@ -11,6 +12,7 @@ export default function Home() {
         <EnhancedAnimatedHeroWithGrid/>
         <OurServices/>
         <RecentProjects/>
+        <CoverDemo/>
       <div className="w-full h-[100vh] bg-red-400 flex items-center justify-center text-3xl">
         new comp soon
       </div>
