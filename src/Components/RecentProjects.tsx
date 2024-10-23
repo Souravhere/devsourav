@@ -63,7 +63,7 @@ export function RecentProjects() {
     {
       title: "Hflag",
       description: "A fully responsive web application built with modern technologies.",
-      image: "/Projects/Hflag-project-card.svg",
+      image: "/Projects/Hashpet-project-card.svg",
       gif: "/backgound.webp",
     },
     {
