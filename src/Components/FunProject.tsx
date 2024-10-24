@@ -1,62 +1,59 @@
 import { cn } from "@/lib/utils";
 import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
-} from "@tabler/icons-react";
+    IconBulb,
+    IconChartBar,
+    IconPencil,
+    IconPalette,
+    IconCode,
+    IconTools,
+    IconBug,
+    IconRocket,
+  } from "@tabler/icons-react";
+  
 
 export function FeaturesSectionDemo() {
   const features = [
     {
-      title: "Built for developers",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
-    },
-    {
-      title: "Ease of use",
-      description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
-    },
-    {
-      title: "Pricing like no other",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
-    },
-    {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
-    },
-    {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
-    },
-    {
-      title: "24/7 Customer Support",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
-      icon: <IconHelp />,
-    },
-    {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
-      icon: <IconAdjustmentsBolt />,
-    },
-    {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
-      icon: <IconHeart />,
-    },
+        title: "Brainstorming & Ideation",
+        description: "Collaborative process to bring your ideas to life and explore creative solutions.",
+        icon: <IconBulb />,
+      },
+      {
+        title: "Market Research",
+        description: "In-depth research to ensure your product stands out in the market.",
+        icon: <IconChartBar />,
+      },
+      {
+        title: "Design & Prototyping",
+        description: "Crafting intuitive designs and prototypes for an engaging user experience.",
+        icon: <IconPencil />,
+      },
+      {
+        title: "Customizable Designs",
+        description: "Tailor-made designs to match your unique vision and brand identity.",
+        icon: <IconPalette />,
+      },
+      {
+        title: "Tech Selection",
+        description: "Choosing the right stack: Next.js, React, WordPress, Wix, and more.",
+        icon: <IconCode />,
+      },
+      {
+        title: "Development",
+        description: "Building high-quality, scalable websites with optimized performance.",
+        icon: <IconTools />,
+      },
+      {
+        title: "Testing & QA",
+        description: "Ensuring everything works smoothly with thorough testing before launch.",
+        icon: <IconBug />,
+      },
+      {
+        title: "Launch Ready",
+        description: "Your project is tested, polished, and ready to go live.",
+        icon: <IconRocket />,
+      },
+      
   ];
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto bg-white">
