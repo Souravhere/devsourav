@@ -20,25 +20,35 @@ export const Cover = ({
   const [beamPositions, setBeamPositions] = useState<number[]>([]);
 
   useEffect(() => {
-    if (ref.current) {
-      setContainerWidth(ref.current?.clientWidth ?? 0);
+    const updateDimensions = () => {
+      if (ref.current) {
+        setContainerWidth(ref.current?.clientWidth ?? 0);
 
-      const height = ref.current?.clientHeight ?? 0;
-      const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
-      const positions = Array.from(
-        { length: numberOfBeams },
-        (_, i) => (i + 1) * (height / (numberOfBeams + 1))
-      );
-      setBeamPositions(positions);
-    }
-  }, [ref.current]);
+        const height = ref.current?.clientHeight ?? 0;
+        const numberOfBeams = Math.floor(height / 10); // Adjust the divisor to control the spacing
+        const positions = Array.from(
+          { length: numberOfBeams },
+          (_, i) => (i + 1) * (height / (numberOfBeams + 1))
+        );
+        setBeamPositions(positions);
+      }
+    };
+
+    updateDimensions(); // Call it once to set initial values
+
+    // You could also add a window resize listener here if needed
+    // window.addEventListener('resize', updateDimensions);
+
+    // Cleanup if you add a resize listener
+    // return () => window.removeEventListener('resize', updateDimensions);
+  }, [ref]); // Only track `ref`, not `ref.current`
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       ref={ref}
-      className="relative hover:bg-neutral-900  group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2  transition duration-200 rounded-sm"
+      className="relative hover:bg-neutral-900 group/cover inline-block dark:bg-neutral-900 bg-neutral-100 px-2 py-2 transition duration-200 rounded-sm"
     >
       <AnimatePresence>
         {hovered && (
