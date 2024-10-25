@@ -76,7 +76,8 @@ export function RecentProjects() {
   return (
     <section className="bg-white py-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-center sm:mb-12 mb-4 text-gray-800">My Recent Projects</h1>
+        {/* <h1 className="text-3xl md:text-4xl font-bold text-center sm:mb-12 mb-4 text-gray-800">My Recent Projects</h1> */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">My Recent Projects</h1>
         <div className="flex w-full items-center justify-center flex-wrap mx-auto">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
