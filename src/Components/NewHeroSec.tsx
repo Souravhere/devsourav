@@ -51,7 +51,8 @@ export default function EnhancedAnimatedHeroWithGrid() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="text-4xl font-bold mb-4"
+          // className="text-4xl font-bold mb-4"
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600"
         >
           a freelancer developer
         </motion.h2>
