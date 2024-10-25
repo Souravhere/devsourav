@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function TrustedCompanies() {
   const companies = [
     { name: 'Yello Labs', logo: '/Work/yellow-labs.png' },
-    { name: 'Hashpet', logo: '/Work/Hashpet.webp' },
+    { name: 'Hashpet', logo: '/Work/hashpet.webp' },
     { name: 'Byyte', logo: '/Work/byyte.png' },
     { name: 'Hflag', logo: '/Work/Hflag.png' },
   ]
