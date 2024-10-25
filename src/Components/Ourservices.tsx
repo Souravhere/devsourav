@@ -164,7 +164,8 @@ const Container: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ 
 export default function OurServices() {
   return (
     <div className="bg-white py-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Our Services</h2>
+      {/* <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Our Services</h2> */}
+      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">Our Services</h2>
       <div className="flex flex-wrap justify-center sm:gap-6 gap-0">
         <ServiceCard
           title="Web Design"
