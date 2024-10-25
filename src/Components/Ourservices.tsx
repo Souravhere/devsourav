@@ -9,6 +9,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { AiOutlineAudit } from "react-icons/ai";
 import { SiGoogleanalytics } from "react-icons/si";
 import { IconType } from "react-icons";
+import { TbSeo } from "react-icons/tb";
 
 interface ServiceCardProps {
   title: string;
@@ -180,7 +181,7 @@ export default function OurServices() {
         <ServiceCard
           title="Testing and SEO"
           description="Ensure your website performs flawlessly and ranks high in search results."
-          icons={[AiOutlineAudit, SiGoogleanalytics]}
+          icons={[AiOutlineAudit, SiGoogleanalytics, TbSeo]}
         />
       </div>
     </div>
