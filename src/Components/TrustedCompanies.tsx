@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function TrustedCompanies() {
   const companies = [
     { name: 'Aceternity UI', logo: '/Work/yellow-labs.png' },
-    { name: 'Gamity', logo: '/placeholder.svg?height=50&width=200' },
+    { name: 'Gamity', logo: '/Work/byyte.png' },
     { name: 'Host IT', logo: '/placeholder.svg?height=50&width=200' },
     { name: 'Asteroid Kit', logo: '/placeholder.svg?height=50&width=200' },
   ]
