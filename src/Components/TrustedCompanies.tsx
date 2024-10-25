@@ -11,8 +11,8 @@ export default function TrustedCompanies() {
   return (
     <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">
-          Trusted by the best companies
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">
+          Trusted by
         </h2>
         {/*   */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
