@@ -14,7 +14,6 @@ export default function TrustedCompanies() {
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">
           Trusted by
         </h2>
-        {/*   */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {companies.map((company) => (
             <div key={company.name} className="col-span-1 flex justify-center items-center">
