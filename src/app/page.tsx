@@ -19,7 +19,7 @@ export default function Home() {
         <TrustedCompanies/>
         <div className="px-7 py-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">Coming Soon</h1>
-          <p className="text-center text-black">We are working hard to bring you more components. Bookmark this page to stay tuned! </p>
+          <p className="text-center text-black">We are working hard to bring you more components. Bookmark this page to stay tuned!</p>
         </div>
     </div>
   );
