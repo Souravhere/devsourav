@@ -29,7 +29,7 @@ export function DockDemo() {
     <div 
       className={`fixed transition-all duration-300 ease-in-out ${
         showDock ? 'opacity-100 z-50' : 'opacity-0 pointer-events-none'
-      } md:bottom-8 md:right-8 bottom-0 left-1/2 md:left-auto md:transform-none transform -translate-x-1/2`}
+      } md:bottom-8 md:right-8 bottom-4  left-1/2 md:left-auto md:transform-none transform -translate-x-1/2`}
     >
       <Dock magnification={60} distance={100}>
         <DockIcon className="bg-black/10 dark:bg-white/10 p-3">
