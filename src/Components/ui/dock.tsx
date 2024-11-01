@@ -54,7 +54,6 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 Dock.displayName = "Dock";
 
 export interface DockIconProps {
-  size?: number;
   magnification?: number;
   distance?: number;
   mouseX?: MotionValue<number>;
@@ -62,10 +61,10 @@ export interface DockIconProps {
   children?: React.ReactNode;
 }
 
-const DockIcon = ({ size, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, mouseX, className, children }: DockIconProps) => {
+const DockIcon = ({ magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, mouseX, className, children }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const distanceCalc = useTransform(mouseX ?? useMotionValue(Infinity), (val: number) => {
+  const distanceCalc = useTransform(mouseX || useMotionValue(Infinity), (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
     return val - bounds.x - bounds.width / 2;
   });
