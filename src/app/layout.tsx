@@ -39,7 +39,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-white relative`}
       >
         <UpdatedFloatingNavbar/>
-        <div className="fixed sm:bottom-4 sm:right-4 right-5 z-50"><DockDemo/></div>
+        <DockDemo/>
         {children}
       </body>
     </html>
