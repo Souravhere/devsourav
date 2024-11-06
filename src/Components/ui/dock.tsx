@@ -22,7 +22,7 @@ const dockVariants = cva(
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
   ({ className, children, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, direction = "bottom", ...props }, ref) => {
-    const mouseX = useMotionValue(Infinity);
+    const mouseX = useMotionValue(Infinity); // Consistent declaration outside any condition
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
