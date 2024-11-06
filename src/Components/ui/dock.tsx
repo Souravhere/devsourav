@@ -22,7 +22,7 @@ const dockVariants = cva(
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
   ({ className, children, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, direction = "bottom", ...props }, ref) => {
-    const mouseX = useMotionValue(Infinity); // Consistent declaration outside any condition
+    const mouseX = useMotionValue(Infinity); // Call this only once at the top
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
@@ -56,7 +56,7 @@ Dock.displayName = "Dock";
 export interface DockIconProps {
   magnification?: number;
   distance?: number;
-  mouseX?: MotionValue<number>;
+  mouseX: MotionValue<number>; // Pass mouseX directly as a required prop
   className?: string;
   children?: React.ReactNode;
 }
@@ -64,7 +64,7 @@ export interface DockIconProps {
 const DockIcon = ({ magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, mouseX, className, children }: DockIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const distanceCalc = useTransform(mouseX || useMotionValue(Infinity), (val: number) => {
+  const distanceCalc = useTransform(mouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
     return val - bounds.x - bounds.width / 2;
   });
