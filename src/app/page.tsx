@@ -5,6 +5,7 @@ import OurServices from "@/Components/Ourservices";
 
 import { RecentProjects } from "@/Components/RecentProjects";
 import TrustedCompanies from "@/Components/TrustedCompanies";
+import WebsiteLoader from "@/Components/Webloader";
 
 
 
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div className="w-full mx-auto">
         <EnhancedAnimatedHeroWithGrid/>
+        <WebsiteLoader/>
         <OurServices/>
         <RecentProjects/>
         <CoverDemo/>
