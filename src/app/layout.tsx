@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
 import UpdatedFloatingNavbar from "@/Components/Navbar";
-import { DockDemo } from "@/Components/Sharedock";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,7 +38,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-white relative`}
       >
         <UpdatedFloatingNavbar/>
-        <DockDemo/>
         {children}
       </body>
     </html>
