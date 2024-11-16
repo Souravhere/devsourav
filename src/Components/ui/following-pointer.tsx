@@ -69,13 +69,8 @@ export const FollowPointer = ({
   title?: string | React.ReactNode;
 }) => {
   const colors = [
-    "var(--sky-500)",
-    "var(--neutral-500)",
-    "var(--teal-500)",
-    "var(--green-500)",
-    "var(--blue-500)",
-    "var(--red-500)",
-    "var(--yellow-500)",
+    "red-500",
+    "yellow-700",
   ];
   return (
     <motion.div
@@ -127,7 +122,7 @@ export const FollowPointer = ({
           opacity: 0,
         }}
         className={
-          "px-2 py-2 bg-neutral-200 text-white whitespace-nowrap min-w-max text-xs rounded-full"
+          "px-2 py-2 bg-[#f6ff68] text-black whitespace-nowrap min-w-max text-xs rounded-full"
         }
       >
         {title || `William Shakespeare`}
