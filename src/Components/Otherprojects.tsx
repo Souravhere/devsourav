@@ -8,27 +8,31 @@ export function OtherProject() {
       title: "Veggie Smart",
       description:
         "Veggie Smart is a comprehensive tool designed to assist shopkeepers and customers in calculating vegetable prices with ease. This web application allows users to input the price per kilogram and the quantity in both kilograms and grams to get the total price.",
+      tags: ["chartjs", "babylonjs", "JavaScript", "jspdf"],
     },
     {
-      slug: "/project-2",
+      slug: "https://ez-modules.vercel.app/",
       date: "12th April, 2024",
-      title: "Digital Hub",
+      title: "EZ Modules",
       description:
-        "Digital transformation redefined. Explore our innovative approach to modern business strategies.",
+        "EZ Modules is a versatile and modern React component library developed with the aim of simplifying the web development experience. It offers a diverse range of UI and feature-based components that are both reusable and customizable, making it easier for developers to build high-quality web applications efficiently.",
+      tags: ["Reactjs", "vitejs", "npm"],
     },
     {
-      slug: "/project-3",
+      slug: "https://funwithsourav.vercel.app/",
       date: "5th May, 2024",
-      title: "Eco Trends",
+      title: "Fun With Sourav",
       description:
-        "Sustainability meets innovation. Discover our journey towards a greener future.",
+        "Welcome to Fun With Sourav! This project showcases the latest in web technology and animation. Created by Sourav Chhimpa, a passionate web developer from India, this repository aims to provide animated page views complete with source code for anyone interested in learning, exploring, and contributing.",
+      tags: ["Gsap", "api", "JavaScript"],
     },
     {
-      slug: "/project-4",
+      slug: "https://gemini-ai-gules.vercel.app/",
       date: "20th June, 2024",
-      title: "Tech Waves",
+      title: "Gemini Ai",
       description:
-        "Shaping tomorrow's tech today. Dive into our latest cutting-edge projects.",
+        "Welcome to Gemini Ai, a React-based clone of Google's Gemini AI, leveraging the Gemini API to offer users an interactive and dynamic AI experience. This project aims to replicate and enhance the functionalities of the original Gemini AI, providing an accessible platform for users to explore and engage with advanced AI capabilities.",
+      tags: ["gemini-api", "reactjs", "vitejs"],
     },
   ];
 
@@ -49,6 +53,16 @@ export function OtherProject() {
                 <h2 className="font-normal my-4 text-sm text-zinc-500">
                   {project.description}
                 </h2>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <div className="flex flex-row justify-between items-center mt-10">
                   <span className="text-sm text-gray-500">{project.date}</span>
                   <div className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs">
