@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { FollowerPointerCard } from "./ui/following-pointer";
 
 export function OtherProject() {
   return (
-    <div className="w-80 mx-auto">
+    <div className="w-full mx-auto">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-2 text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-gray-900 via-gray-700 to-gray-600">Other Projects</h1>
+         <div className="w-80 mx-auto">
         <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
           <div className="w-full aspect-w-16 aspect-h-10 bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative cursor-pointer">
             <Image
@@ -30,13 +31,14 @@ export function OtherProject() {
           </div>
         </div>
     </div>
+    </div>
   );
 }
 
 const blogContent = {
   slug: "amazing-tailwindcss-grid-layouts",
   author: "Sourav",
-  date: "28th March, 2023",
+  date: "28th March, 2024",
   title: "Veggie Smart",
   description:
     "Grids are cool, but Tailwindcss grids are cooler. In this article, we will learn how to create amazing Grid layouts with Tailwindcs grid and React.",
