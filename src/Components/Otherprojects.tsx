@@ -3,11 +3,11 @@ import Link from "next/link";
 export function OtherProject() {
   const projects = [
     {
-      slug: "/project-1",
+      slug: "https://souravhere.github.io/Veggie-Smart/",
       date: "28th March, 2024",
       title: "Veggie Smart",
       description:
-        "Grids are cool, but Tailwindcss grids are cooler. In this article, we will learn how to create amazing Grid layouts with Tailwindcss grid and React.",
+        "Veggie Smart is a comprehensive tool designed to assist shopkeepers and customers in calculating vegetable prices with ease. This web application allows users to input the price per kilogram and the quantity in both kilograms and grams to get the total price.",
     },
     {
       slug: "/project-2",
