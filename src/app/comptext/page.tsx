@@ -49,14 +49,14 @@ export default function Component() {
 
       // Draw horizontal lines with movement
       for (let y = 0; y <= (perspectiveEnd - perspectiveStart); y += gridSize) {
-        const progress = y / (perspectiveEnd - perspectiveStart)
+        // const progress = y / (perspectiveEnd - perspectiveStart)
         const currentY = y + perspectiveStart + offset
         
         if (currentY >= perspectiveStart && currentY <= perspectiveEnd) {
           const startWidth = canvas.width
-          const endWidth = canvas.width * (2 - progress)
+        //   const endWidth = canvas.width * (2 - progress)
           const startX = (canvas.width - startWidth) / 2
-          const endX = (canvas.width - endWidth) / 2
+        //   const endX = (canvas.width - endWidth) / 2
           
           ctx.beginPath()
           ctx.moveTo(startX, currentY)
